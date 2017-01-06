@@ -17,7 +17,7 @@ class EotfsSpider(scrapy.Spider):
                     'content': post.css('[data-role="commentContent"] > *').extract(),
             }
 
-#        next_page = response.css('li.next a::attr("href")').extract_first()
-#        if next_page is not None:
-#            next_page = response.urljoin(next_page)
-#            yield scrapy.Request(next_page, callback=self.parse)
+        next_page = response.css('a[title="Next page"]::attr("href")').extract_first()
+        if next_page is not None:
+            next_page = response.urljoin(next_page)
+            yield scrapy.Request(next_page, callback=self.parse)
