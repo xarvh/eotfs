@@ -3,9 +3,8 @@ import scrapy
 
 class EotfsSpider(scrapy.Spider):
     name = "eotfs"
-    start_urls = [
-        'https://www.rpnation.com/topic/49741-emperors-of-the-fading-suns-emperors-of-the-fading-suns-chapter-6-scene-17-renovations/'
-    ]
+
+    start_urls = open('threads').read().split('\n')
 
     def parse(self, response):
         threadId = response.url.split("/")[-2]
